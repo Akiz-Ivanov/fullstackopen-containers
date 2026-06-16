@@ -1,0 +1,66 @@
+akiz@DESKTOP-QIS1OJR:/mnt/d/VS Code/fso practice/part12/fs-containers/todo-app/todo-backend$ docker exec -it todo-backend-mongo-1 mongosh -u root -p example
+Current Mongosh Log ID: 6a318e4d2d5974b5599df8a2
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.3
+Using MongoDB:          8.2.11
+Using Mongosh:          2.8.3
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-06-16T17:51:06.394+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-06-16T17:51:07.541+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-06-16T17:51:07.541+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-06-16T17:51:07.541+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-06-16T17:51:07.541+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> show dbs
+admin         100.00 KiB
+config         48.00 KiB
+local          64.00 KiB
+the_database   56.00 KiB
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6a315d48bfa07914169df8a3'),
+    text: 'New text',
+    done: true
+  },
+  {
+    _id: ObjectId('6a315d48bfa07914169df8a4'),
+    text: 'Learn about containers',
+    done: false
+  }
+]
+the_database> db.todos.insertOne({
+|   text: "Increase the number of tools in my tool belt",
+|   done: false
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6a318eec2d5974b5599df8a3')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6a315d48bfa07914169df8a3'),
+    text: 'New text',
+    done: true
+  },
+  {
+    _id: ObjectId('6a315d48bfa07914169df8a4'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('6a318eec2d5974b5599df8a3'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> 
