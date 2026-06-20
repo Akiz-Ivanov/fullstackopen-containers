@@ -26,6 +26,10 @@ jobs:
         working-directory: ./todo-app/todo-frontend
         run: docker build -t todo-front -f Dockerfile .
 
+      - name: Build initialized Mongo image
+        working-directory: ./todo-app/todo-backend/mongo
+        run: docker build -t initialized-mongo .
+
       - name: Start todo-app with Docker Compose
         working-directory: ./todo-app
         run: docker compose up -d
