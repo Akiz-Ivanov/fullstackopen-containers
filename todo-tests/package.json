@@ -8,7 +8,11 @@
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:debug": "playwright test --debug"
   },
-  "keywords": ["playwright", "e2e", "testing"],
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
