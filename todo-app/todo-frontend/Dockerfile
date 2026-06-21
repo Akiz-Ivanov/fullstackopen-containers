@@ -19,6 +19,8 @@ WORKDIR /usr/src/app
 
 COPY --from=test /usr/src/app .
 
+ENV VITE_BACKEND_URL=/api
+
 RUN npm run build
 
 
